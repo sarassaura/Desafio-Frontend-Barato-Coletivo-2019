@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Product } from '../product';
 
 @Injectable({
   providedIn: 'root',
@@ -7,7 +8,15 @@ import { Injectable } from '@angular/core';
 export class ProductService {
   constructor(private http: HttpClient) {}
 
+  url = 'https://fakestoreapi.com/products/';
+
+  products: Product[] = [];
+
   getAllProducts() {
-    return this.http.get('https://fakestoreapi.com/products/');
+    this.http
+      .get<Product[]>(this.url)
+      .subscribe((data: Product[]) => (this.products = data));
+
+    return this.products;
   }
 }
