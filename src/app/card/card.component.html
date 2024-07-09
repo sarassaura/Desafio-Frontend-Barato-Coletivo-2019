@@ -5,7 +5,7 @@
     <p>{{ product.price }}</p>
     <p>{{ product.description }}</p>
     <p>{{ product.category }}</p>
-    <p>{{ product.image }}</p>
+    <img [src]="product.image" [alt]="product.title" />
     <p>{{ product.rating.count }}</p>
     <p>{{ product.rating.rate }}</p>
   }
